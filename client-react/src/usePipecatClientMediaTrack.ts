@@ -10,8 +10,8 @@ import { atomFamily, useAtomCallback } from "jotai/utils";
 import { PrimitiveAtom } from "jotai/vanilla";
 import { useCallback, useEffect } from "react";
 
-import { useRTVIClient } from "./useRTVIClient";
-import { useRTVIClientEvent } from "./useRTVIClientEvent";
+import { usePipecatClient } from "./usePipecatClient";
+import { usePipecatClientEvent } from "./usePipecatClientEvent";
 
 type ParticipantType = keyof Tracks;
 type TrackType = keyof Tracks["local"];
@@ -42,11 +42,11 @@ const trackAtom = atomFamily<
   return trackType === "audio" ? botAudioTrackAtom : botVideoTrackAtom;
 });
 
-export const useRTVIClientMediaTrack = (
+export const usePipecatClientMediaTrack = (
   trackType: TrackType,
   participantType: ParticipantType
 ) => {
-  const client = useRTVIClient();
+  const client = usePipecatClient();
   const track = useAtomValue(
     trackAtom({ local: participantType === "local", trackType })
   );
@@ -72,7 +72,7 @@ export const useRTVIClientMediaTrack = (
     )
   );
 
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.TrackStarted,
     useCallback(
       (track: MediaStreamTrack, participant?: Participant) => {
@@ -86,7 +86,7 @@ export const useRTVIClientMediaTrack = (
     )
   );
 
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.ScreenTrackStarted,
     useCallback(
       (track: MediaStreamTrack, participant?: Participant) => {

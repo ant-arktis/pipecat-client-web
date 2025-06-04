@@ -7,12 +7,12 @@
 import { RTVIEvent } from "@pipecat-ai/client-js";
 import { useCallback, useEffect, useRef } from "react";
 
-import { useRTVIClientEvent } from "./useRTVIClientEvent";
-import { useRTVIClientMediaTrack } from "./useRTVIClientMediaTrack";
+import { usePipecatClientEvent } from "./usePipecatClientEvent";
+import { usePipecatClientMediaTrack } from "./usePipecatClientMediaTrack";
 
-export const RTVIClientAudio = () => {
+export const PipecatClientAudio = () => {
   const botAudioRef = useRef<HTMLAudioElement>(null);
-  const botAudioTrack = useRTVIClientMediaTrack("audio", "bot");
+  const botAudioTrack = usePipecatClientMediaTrack("audio", "bot");
 
   useEffect(() => {
     if (!botAudioRef.current || !botAudioTrack) return;
@@ -25,7 +25,7 @@ export const RTVIClientAudio = () => {
     botAudioRef.current.srcObject = new MediaStream([botAudioTrack]);
   }, [botAudioTrack]);
 
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.SpeakerUpdated,
     useCallback((speaker: MediaDeviceInfo) => {
       if (!botAudioRef.current) return;
@@ -40,4 +40,4 @@ export const RTVIClientAudio = () => {
     </>
   );
 };
-RTVIClientAudio.displayName = "RTVIClientAudio";
+PipecatClientAudio.displayName = "PipecatClientAudio";

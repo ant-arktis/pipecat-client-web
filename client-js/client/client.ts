@@ -110,7 +110,7 @@ export interface PipecatClientOptions {
   transport: Transport;
 
   /**
-   * Optional callback methods for PCI events
+   * Optional callback methods for RTVI events
    */
   callbacks?: RTVIEventCallbacks;
 
@@ -535,7 +535,7 @@ export class PipecatClient extends RTVIEventEmitter {
   }
 
   protected handleMessage(ev: RTVIMessage): void {
-    logger.debug("[PCI Message]", ev);
+    logger.debug("[RTVI Message]", ev);
 
     switch (ev.type) {
       case RTVIMessageType.BOT_READY:

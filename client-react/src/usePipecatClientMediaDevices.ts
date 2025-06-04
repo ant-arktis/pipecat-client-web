@@ -3,8 +3,8 @@ import { atom, useAtomValue } from "jotai";
 import { useAtomCallback } from "jotai/utils";
 import { useCallback, useEffect } from "react";
 
-import { useRTVIClient } from "./useRTVIClient";
-import { useRTVIClientEvent } from "./useRTVIClientEvent";
+import { usePipecatClient } from "./usePipecatClient";
+import { usePipecatClientEvent } from "./usePipecatClientEvent";
 
 type OptionalMediaDeviceInfo = MediaDeviceInfo | Record<string, never>;
 
@@ -15,8 +15,8 @@ const selectedMicAtom = atom<OptionalMediaDeviceInfo>({});
 const selectedCamAtom = atom<OptionalMediaDeviceInfo>({});
 const selectedSpeakerAtom = atom<OptionalMediaDeviceInfo>({});
 
-export const useRTVIClientMediaDevices = () => {
-  const client = useRTVIClient();
+export const usePipecatClientMediaDevices = () => {
+  const client = usePipecatClient();
 
   const availableCams = useAtomValue(availableCamsAtom);
   const availableMics = useAtomValue(availableMicsAtom);
@@ -50,7 +50,7 @@ export const useRTVIClientMediaDevices = () => {
     initDevices();
   }, [initDevices]);
 
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.AvailableCamsUpdated,
     useAtomCallback(
       useCallback((_get, set, cams) => {
@@ -58,7 +58,7 @@ export const useRTVIClientMediaDevices = () => {
       }, [])
     )
   );
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.AvailableMicsUpdated,
     useAtomCallback(
       useCallback((_get, set, mics) => {
@@ -66,7 +66,7 @@ export const useRTVIClientMediaDevices = () => {
       }, [])
     )
   );
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.AvailableSpeakersUpdated,
     useAtomCallback(
       useCallback((_get, set, speakers) => {
@@ -74,7 +74,7 @@ export const useRTVIClientMediaDevices = () => {
       }, [])
     )
   );
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.CamUpdated,
     useAtomCallback(
       useCallback((_get, set, cam) => {
@@ -82,7 +82,7 @@ export const useRTVIClientMediaDevices = () => {
       }, [])
     )
   );
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.MicUpdated,
     useAtomCallback(
       useCallback((_get, set, mic) => {
@@ -90,7 +90,7 @@ export const useRTVIClientMediaDevices = () => {
       }, [])
     )
   );
-  useRTVIClientEvent(
+  usePipecatClientEvent(
     RTVIEvent.SpeakerUpdated,
     useAtomCallback(
       useCallback((_get, set, speaker) => {
