@@ -4,7 +4,7 @@ import { useAtomCallback } from "jotai/utils";
 import { useCallback, useEffect } from "react";
 
 import { usePipecatClient } from "./usePipecatClient";
-import { usePipecatClientEvent } from "./usePipecatClientEvent";
+import { useRTVIClientEvent } from "./useRTVIClientEvent";
 
 type OptionalMediaDeviceInfo = MediaDeviceInfo | Record<string, never>;
 
@@ -50,7 +50,7 @@ export const usePipecatClientMediaDevices = () => {
     initDevices();
   }, [initDevices]);
 
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.AvailableCamsUpdated,
     useAtomCallback(
       useCallback((_get, set, cams) => {
@@ -58,7 +58,7 @@ export const usePipecatClientMediaDevices = () => {
       }, [])
     )
   );
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.AvailableMicsUpdated,
     useAtomCallback(
       useCallback((_get, set, mics) => {
@@ -66,7 +66,7 @@ export const usePipecatClientMediaDevices = () => {
       }, [])
     )
   );
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.AvailableSpeakersUpdated,
     useAtomCallback(
       useCallback((_get, set, speakers) => {
@@ -74,7 +74,7 @@ export const usePipecatClientMediaDevices = () => {
       }, [])
     )
   );
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.CamUpdated,
     useAtomCallback(
       useCallback((_get, set, cam) => {
@@ -82,7 +82,7 @@ export const usePipecatClientMediaDevices = () => {
       }, [])
     )
   );
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.MicUpdated,
     useAtomCallback(
       useCallback((_get, set, mic) => {
@@ -90,7 +90,7 @@ export const usePipecatClientMediaDevices = () => {
       }, [])
     )
   );
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.SpeakerUpdated,
     useAtomCallback(
       useCallback((_get, set, speaker) => {

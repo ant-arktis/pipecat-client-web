@@ -96,8 +96,10 @@ export type RTVIEvents = Partial<{
   error: (message: RTVIMessage) => void;
 
   /** server messaging */
-  serverMessage: (data: unknown) => void;
-  serverResponse: (data: unknown) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  serverMessage: (data: any) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  serverResponse: (data: any) => void;
   messageError: (message: RTVIMessage) => void;
 
   /** service events */

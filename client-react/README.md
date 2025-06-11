@@ -172,7 +172,7 @@ function MyComponent() {
 }
 ```
 
-### usePipecatClientEvent
+### useRTVIClientEvent
 
 Allows subscribing to RTVI client events.
 It is advised to wrap handlers with `useCallback`.
@@ -185,10 +185,10 @@ It is advised to wrap handlers with `useCallback`.
 ```jsx
 import { useCallback } from "react";
 import { RTVIEvent, TransportState } from "@pipecat-ai/client-js";
-import { usePipecatClientEvent } from "@pipecat-ai/client-react";
+import { useRTVIClientEvent } from "@pipecat-ai/client-react";
 
 function EventListener() {
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.TransportStateChanged,
     useCallback((transportState: TransportState) => {
       console.log("Transport state changed to", transportState);

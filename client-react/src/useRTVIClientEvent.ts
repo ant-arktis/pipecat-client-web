@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 import { usePipecatClient } from "./usePipecatClient";
 
-export const usePipecatClientEvent = <E extends RTVIEvent>(
+export const useRTVIClientEvent = <E extends RTVIEvent>(
   event: E,
   handler: RTVIEventHandler<E>
 ) => {

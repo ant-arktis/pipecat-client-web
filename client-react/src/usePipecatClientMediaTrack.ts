@@ -11,7 +11,7 @@ import { PrimitiveAtom } from "jotai/vanilla";
 import { useCallback, useEffect } from "react";
 
 import { usePipecatClient } from "./usePipecatClient";
-import { usePipecatClientEvent } from "./usePipecatClientEvent";
+import { useRTVIClientEvent } from "./useRTVIClientEvent";
 
 type ParticipantType = keyof Tracks;
 type TrackType = keyof Tracks["local"];
@@ -72,7 +72,7 @@ export const usePipecatClientMediaTrack = (
     )
   );
 
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.TrackStarted,
     useCallback(
       (track: MediaStreamTrack, participant?: Participant) => {
@@ -86,7 +86,7 @@ export const usePipecatClientMediaTrack = (
     )
   );
 
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.ScreenTrackStarted,
     useCallback(
       (track: MediaStreamTrack, participant?: Participant) => {

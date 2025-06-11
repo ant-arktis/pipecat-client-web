@@ -11,11 +11,11 @@ import { PipecatClientProvider } from "./PipecatClientProvider";
 import { PipecatClientVideo } from "./PipecatClientVideo";
 import { usePipecatClient } from "./usePipecatClient";
 import { usePipecatClientCamControl } from "./usePipecatClientCamControl";
-import { usePipecatClientEvent } from "./usePipecatClientEvent";
 import { usePipecatClientMediaDevices } from "./usePipecatClientMediaDevices";
 import { usePipecatClientMediaTrack } from "./usePipecatClientMediaTrack";
 import { usePipecatClientMicControl } from "./usePipecatClientMicControl";
 import { usePipecatClientTransportState } from "./usePipecatClientTransportState";
+import { useRTVIClientEvent } from "./useRTVIClientEvent";
 import { VoiceVisualizer } from "./VoiceVisualizer";
 
 export {
@@ -26,10 +26,10 @@ export {
   PipecatClientVideo,
   usePipecatClient,
   usePipecatClientCamControl,
-  usePipecatClientEvent,
   usePipecatClientMediaDevices,
   usePipecatClientMediaTrack,
   usePipecatClientMicControl,
   usePipecatClientTransportState,
+  useRTVIClientEvent,
   VoiceVisualizer,
 };

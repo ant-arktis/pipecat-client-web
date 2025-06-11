@@ -7,14 +7,14 @@
 import { RTVIEvent, TransportState } from "@pipecat-ai/client-js";
 import { atom, useAtom } from "jotai";
 
-import { usePipecatClientEvent } from "./usePipecatClientEvent";
+import { useRTVIClientEvent } from "./useRTVIClientEvent";
 
 const transportStateAtom = atom<TransportState>("disconnected");
 
 export const usePipecatClientTransportState = () => {
   const [transportState, setTransportState] = useAtom(transportStateAtom);
 
-  usePipecatClientEvent(RTVIEvent.TransportStateChanged, setTransportState);
+  useRTVIClientEvent(RTVIEvent.TransportStateChanged, setTransportState);
 
   return transportState;
 };

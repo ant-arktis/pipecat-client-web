@@ -60,7 +60,8 @@ export type RTVIEventCallbacks = Partial<{
   onBotDisconnected: (participant: Participant) => void;
   onMetrics: (data: PipecatMetricsData) => void;
 
-  onServerMessage: (data: unknown) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onServerMessage: (data: any) => void;
   onMessageError: (message: RTVIMessage) => void;
 
   onParticipantJoined: (participant: Participant) => void;

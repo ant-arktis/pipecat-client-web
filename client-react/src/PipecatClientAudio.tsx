@@ -7,8 +7,8 @@
 import { RTVIEvent } from "@pipecat-ai/client-js";
 import { useCallback, useEffect, useRef } from "react";
 
-import { usePipecatClientEvent } from "./usePipecatClientEvent";
 import { usePipecatClientMediaTrack } from "./usePipecatClientMediaTrack";
+import { useRTVIClientEvent } from "./useRTVIClientEvent";
 
 export const PipecatClientAudio = () => {
   const botAudioRef = useRef<HTMLAudioElement>(null);
@@ -25,7 +25,7 @@ export const PipecatClientAudio = () => {
     botAudioRef.current.srcObject = new MediaStream([botAudioTrack]);
   }, [botAudioTrack]);
 
-  usePipecatClientEvent(
+  useRTVIClientEvent(
     RTVIEvent.SpeakerUpdated,
     useCallback((speaker: MediaDeviceInfo) => {
       if (!botAudioRef.current) return;
