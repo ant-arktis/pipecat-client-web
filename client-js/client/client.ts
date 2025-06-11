@@ -606,7 +606,6 @@ export class PipecatClient extends RTVIEventEmitter {
         break;
       }
       case RTVIMessageType.LLM_FUNCTION_CALL: {
-        console.log("[Pipcat Client] LLM function call", ev.data);
         const data = ev.data as LLMFunctionCallData;
         const fc = this._functionCallCallbacks[data.function_name];
         if (fc) {
@@ -627,8 +626,14 @@ export class PipecatClient extends RTVIEventEmitter {
         }
         break;
       }
+      case RTVIMessageType.BOT_LLM_SEARCH_RESPONSE: {
+        const data = ev.data as BotLLMSearchResponseData;
+        this._options.callbacks?.onBotLlmSearchResponse?.(data);
+        this.emit(RTVIEvent.BotLlmSearchResponse, data);
+        break;
+      }
       default: {
-        logger.debug("[Pipcat Client] Unrecognized message type", ev.type);
+        logger.debug("[Pipecat Client] Unrecognized message type", ev.type);
         break;
       }
     }
